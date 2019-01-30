@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import logo from './logo.svg';
 import './App.css';
 import RoomList from './components/RoomList';
 
@@ -18,8 +17,8 @@ import RoomList from './components/RoomList';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        
+      <div>
+        <RoomList firebase={firebase} />
       </div>
     );
   }
