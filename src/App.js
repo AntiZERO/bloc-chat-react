@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import './App.css';
 import RoomList from './components/RoomList';
-import MessageList from './components/MessageList'
+import MessageList from './components/MessageList';
+import User from './components/User';
 
 // Initialize Firebase
   var config = {
@@ -18,24 +19,30 @@ import MessageList from './components/MessageList'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {activeRoom: ""};
+    this.state = {activeRoom: "", user: null};
   }
 
 setActiveRoom(room) {
   this.setState({activeRoom: room})
 }
 
+setUser(user){
+  this.setState({user: user})
+}
+
   render() {
     const showMessages = this.state.activeRoom;
+    const userName = this.state.user === null ? "Guest" : this.state.user.displayName;
 
     return (
       <div className = "App">
       <header className = "header">
         <h1> Bloc Chat!</h1>
+        <User firebase={firebase} setUser={this.setUser.bind(this)} userName={userName} />
       </header>
-      <div className="roomNav">
+      <nav className="roomNav">
         <RoomList firebase={firebase} activeRoom={this.setActiveRoom.bind(this)} />
-      </div>
+      </nav>
       <main>
         <h1>{this.state.activeRoom.name}</h1>
         <div id="messageArea">

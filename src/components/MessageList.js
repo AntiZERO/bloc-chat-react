@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class MessageList extends Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [], username:"" ,content: "", sentAt: "", roomId: "" };
+    this.state = { messages: [], user:"" ,content: "", sentAt: "", roomId: "" };
     this.messagesRef = this.props.firebase.database().ref('messages');
   }
 
@@ -23,7 +23,7 @@ class MessageList extends Component {
 
     .filter(message => message.roomId === activeRoom)
     .map(message => {
-      return <div key={message.key}>{"From: " + message.username + " | Sent At: " + message.sentAt + " | Message: " + message.content}</div>
+      return <div key={message.key}>{"From: " + message.user + " | Sent At: " + message.sentAt + " | Message: " + message.content}</div>
     })
 
     return (
