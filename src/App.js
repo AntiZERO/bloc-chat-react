@@ -39,7 +39,7 @@ setActiveRoom(room) {
       <main>
         <h1>{this.state.activeRoom.name}</h1>
         <div id="messageArea">
-          {showMessages ? (<MessageList firebase={firebase} currentRoom={this.state.activeRoom.key}/>) : (null) }
+          {showMessages ? (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key}/>) : (null) }
         </div>
       </main>
       </div>
