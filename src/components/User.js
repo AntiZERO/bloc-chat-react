@@ -32,9 +32,9 @@ export class User extends Component {
 	
 		return (
 			<section>
-				<div id="user-name">{this.props.userName}</div>
+				<div id="user-name">{this.props.user}</div>
 
-				{this.props.userName === 'Guest' ?
+				{this.props.user === 'Guest' ?
 					<button id="sign-in" onClick={() => this.userSignIn()}>Sign In</button>
 					:
 					<button id="sign-out" onClick={() => this.userSignOut()}>Sign Out</button>

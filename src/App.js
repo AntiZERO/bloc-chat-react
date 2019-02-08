@@ -27,18 +27,19 @@ setActiveRoom(room) {
 }
 
 setUser(user){
-  this.setState({user: user})
+  if (user === null ) {
+    return this.setState({ user: "Guest"})
+  } else return this.setState({user: user.displayName})
 }
 
   render() {
     const showMessages = this.state.activeRoom;
-    const userName = this.state.user === null ? "Guest" : this.state.user.displayName;
 
     return (
       <div className = "App">
       <header className = "header">
         <h1> Bloc Chat!</h1>
-        <User firebase={firebase} setUser={this.setUser.bind(this)} userName={userName} />
+        <User firebase={firebase} setUser={this.setUser.bind(this)} user={this.state.user} />
       </header>
       <nav className="roomNav">
         <RoomList firebase={firebase} activeRoom={this.setActiveRoom.bind(this)} />
@@ -46,7 +47,7 @@ setUser(user){
       <main>
         <h1>{this.state.activeRoom.name}</h1>
         <div id="messageArea">
-          {showMessages ? (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key}/>) : (null) }
+          {showMessages ? (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={this.state.user} />) : (null) }
         </div>
       </main>
       </div>

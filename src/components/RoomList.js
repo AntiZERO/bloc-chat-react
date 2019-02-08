@@ -48,7 +48,7 @@ class RoomList extends Component {
                         })}
                     </ul>
                 </div>
-                <form id="createNewRoom">
+                <form id="create-new-room">
                     <input type="text" value={this.state.newRoom} onChange={(event) => this.handleChange(event)} />
                     <input type="submit" onClick={(event) => this.createRoom(event)} />
                 </form>
